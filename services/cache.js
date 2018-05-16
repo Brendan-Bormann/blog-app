@@ -24,7 +24,9 @@ mongoose.Query.prototype.exec = async function() {
         const doc = JSON.parse(cacheValue);
 
         return Array.isArray(doc)
+            // is array return doc for each array item
             ? doc.map(d => new this.model(d))
+            // else return single doc
             : new this.model(doc);
     }
 
